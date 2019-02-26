@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE logback>
+<configuration>
+
+	<!-- ログ・コンソール出力 -->
+	<appender name="STOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>TRACE</level>
+		</filter>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L][%M] - %msg%n</pattern>
+		</encoder>
+		<prudent>true</prudent>
+	</appender>
+
+	<!-- TRACEログ -->
+	<appender name="TRACE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>R:/log/JavaSample/trace.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>R:/log/JavaSample/trace-%d{yyyyMMdd}.log</fileNamePattern>
+			<maxHistory>1095</maxHistory>
+		</rollingPolicy>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>TRACE</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L][%M] - %msg%n</pattern>
+		</encoder>
+		<prudent>true</prudent>
+	</appender>
+
+	<!-- DEBUGログ -->
+	<appender name="DEBUG"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>R:/log/JavaSample/debug.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>R:/log/JavaSample/debug-%d{yyyyMMdd}.log</fileNamePattern>
+			<maxHistory>1095</maxHistory>
+		</rollingPolicy>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>DEBUG</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L][%M] - %msg%n</pattern>
+		</encoder>
+		<prudent>true</prudent>
+	</appender>
+
+	<!-- INFOログ -->
+	<appender name="INFO"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>R:/log/JavaSample/info.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>R:/log/JavaSample/info-%d{yyyyMMdd}.log</fileNamePattern>
+			<maxHistory>1095</maxHistory>
+		</rollingPolicy>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L][%M] - %msg%n</pattern>
+		</encoder>
+		<prudent>true</prudent>
+	</appender>
+
+	<!-- WARNログ -->
+	<appender name="WARN"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>R:/log/JavaSample/warn.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>R:/log/JavaSample/warn-%d{yyyyMMdd}.log</fileNamePattern>
+			<maxHistory>1095</maxHistory>
+		</rollingPolicy>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>WARN</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L][%M] - %msg%n</pattern>
+		</encoder>
+		<prudent>true</prudent>
+	</appender>
+
+	<!-- ERRORログ -->
+	<appender name="ERROR"
+		class="ch.qos.logback.core.FileAppender">
+		<file>R:/log/JavaSample/error.log</file>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L][%M] - %msg%n</pattern>
+		</encoder>
+		<prudent>true</prudent>
+	</appender>
+
+	<!-- ロガー・ファイル出力 -->
+	<logger name="net.solutions.aristo" additivity="false" level="TRACE">
+		<appender-ref ref="TRACE" />
+		<appender-ref ref="DEBUG" />
+		<appender-ref ref="INFO" />
+		<appender-ref ref="WARN" />
+		<appender-ref ref="ERROR" />
+	</logger>
+
+	<!-- ロガー・コンソール出力 -->
+	<logger name="net.solutions.aristo" additivity="false" level="TRACE">
+		<appender-ref ref="STOUT" />
+	</logger>
+</configuration>
