@@ -10,7 +10,7 @@
 		</filter>
 		<encoder>
 			<charset>UTF-8</charset>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L][%M] - %msg%n</pattern>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L] - %msg%n</pattern>
 		</encoder>
 		<prudent>true</prudent>
 	</appender>
@@ -22,7 +22,7 @@
 		<rollingPolicy
 			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<fileNamePattern>R:/log/JavaSample/trace-%d{yyyyMMdd}.log</fileNamePattern>
-			<maxHistory>1095</maxHistory>
+			<maxHistory>7</maxHistory>
 		</rollingPolicy>
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
 			<level>TRACE</level>
@@ -31,7 +31,7 @@
 		</filter>
 		<encoder>
 			<charset>UTF-8</charset>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L][%M] - %msg%n</pattern>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L] - %msg%n</pattern>
 		</encoder>
 		<prudent>true</prudent>
 	</appender>
@@ -43,7 +43,7 @@
 		<rollingPolicy
 			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<fileNamePattern>R:/log/JavaSample/debug-%d{yyyyMMdd}.log</fileNamePattern>
-			<maxHistory>1095</maxHistory>
+			<maxHistory>7</maxHistory>
 		</rollingPolicy>
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
 			<level>DEBUG</level>
@@ -52,7 +52,7 @@
 		</filter>
 		<encoder>
 			<charset>UTF-8</charset>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L][%M] - %msg%n</pattern>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L] - %msg%n</pattern>
 		</encoder>
 		<prudent>true</prudent>
 	</appender>
@@ -64,7 +64,7 @@
 		<rollingPolicy
 			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<fileNamePattern>R:/log/JavaSample/info-%d{yyyyMMdd}.log</fileNamePattern>
-			<maxHistory>1095</maxHistory>
+			<maxHistory>7</maxHistory>
 		</rollingPolicy>
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
 			<level>INFO</level>
@@ -73,7 +73,7 @@
 		</filter>
 		<encoder>
 			<charset>UTF-8</charset>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L][%M] - %msg%n</pattern>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L] - %msg%n</pattern>
 		</encoder>
 		<prudent>true</prudent>
 	</appender>
@@ -85,7 +85,7 @@
 		<rollingPolicy
 			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<fileNamePattern>R:/log/JavaSample/warn-%d{yyyyMMdd}.log</fileNamePattern>
-			<maxHistory>1095</maxHistory>
+			<maxHistory>7</maxHistory>
 		</rollingPolicy>
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
 			<level>WARN</level>
@@ -94,7 +94,7 @@
 		</filter>
 		<encoder>
 			<charset>UTF-8</charset>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L][%M] - %msg%n</pattern>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L] - %msg%n</pattern>
 		</encoder>
 		<prudent>true</prudent>
 	</appender>
@@ -110,13 +110,25 @@
 		</filter>
 		<encoder>
 			<charset>UTF-8</charset>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L][%M] - %msg%n</pattern>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level: [%F:%L] - %msg%n</pattern>
 		</encoder>
 		<prudent>true</prudent>
 	</appender>
 
-	<!-- ロガー・ファイル出力 -->
-	<logger name="net.solutions.aristo" additivity="false" level="TRACE">
+	<!-- ロガー・root設定 -->
+	<root level="TRACE">
+		<appender-ref ref="STOUT" />
+		<appender-ref ref="TRACE" />
+		<appender-ref ref="DEBUG" />
+		<appender-ref ref="INFO" />
+		<appender-ref ref="WARN" />
+		<appender-ref ref="ERROR" />
+	</root>
+
+	<!-- ロガー・パッケージ別設定 -->
+	<logger name="net.solutions.aristo" additivity="false"
+		level="TRACE">
+		<appender-ref ref="STOUT" />
 		<appender-ref ref="TRACE" />
 		<appender-ref ref="DEBUG" />
 		<appender-ref ref="INFO" />
@@ -124,8 +136,4 @@
 		<appender-ref ref="ERROR" />
 	</logger>
 
-	<!-- ロガー・コンソール出力 -->
-	<logger name="net.solutions.aristo" additivity="false" level="TRACE">
-		<appender-ref ref="STOUT" />
-	</logger>
 </configuration>
