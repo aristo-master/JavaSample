@@ -1,0 +1,6 @@
+net\solutions\aristo\logger\LogOutputLoggingLog.class
+net\solutions\aristo\logger\LogOutputLoggingSLf4Logger.class
+net\solutions\aristo\logger\LogOutputLoggingLogger.class
+net\solutions\aristo\jackson\JacksonSample.class
+net\solutions\aristo\utils\CalculateBit.class
+net\solutions\aristo\jackson\Hoge.class

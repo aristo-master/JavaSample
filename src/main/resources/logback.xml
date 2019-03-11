@@ -142,7 +142,7 @@
 	</root>
 
 	<!-- ロガー・パッケージ別設定 -->
-	<logger name="net.solutions.aristo" additivity="false" level="TRACE">
+	<logger name="net.solutions.aristo" additivity="false" level="INFO">
 		<appender-ref ref="STOUT" />
 		<appender-ref ref="ALL" />
 		<appender-ref ref="TRACE" />
